@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "130014415741",
+    "firebase_url": "https://fkgkemahasi.firebaseio.com",
+    "project_id": "fkgkemahasi",
+    "storage_bucket": "fkgkemahasi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130014415741:android:dc3d66d3812fce28",
+        "android_client_info": {
+          "package_name": "com.preangerstd.firebasefkg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130014415741-rdm8to7k6o7h2n2d04ih09rvj0ga0lnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf2IGcZlNRnofeAEC1qs2g5rzf617B2A0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
