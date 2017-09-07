@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private RecyclerView mahasiswaList;
     private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseUser;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -69,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mahasiswaList.setHasFixedSize(true);
         mahasiswaList.setLayoutManager(new LinearLayoutManager(this));
         mDatabase = FirebaseDatabase.getInstance().getReference().child("tbMahasiswa");
+        mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("User");
+        mDatabaseUser.keepSynced(true);
         checkUserExist();
     }
 
@@ -99,6 +103,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if(item.getItemId() == R.id.action_logout){
+            logout();
         }
 
         return super.onOptionsItemSelected(item);
@@ -160,65 +168,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mAuth.addAuthStateListener(mAuthListener);
 
-        FirebaseRecyclerAdapter<BlogPost, PostViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogPost, PostViewHolder>(
+        FirebaseRecyclerAdapter<DataMahasiswa, PostViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<DataMahasiswa, PostViewHolder>(
 
-                BlogPost.class,
-                R.layout.blog_post,
+                DataMahasiswa.class,
+                R.layout.card_mahasiswa,
                 PostViewHolder.class,
                 mDatabase
         ) {
             @Override
-            protected void populateViewHolder(PostViewHolder viewHolder, final BlogPost model, int position) {
+            protected void populateViewHolder(PostViewHolder viewHolder, final DataMahasiswa model, int position) {
 
                 final String postKey = getRef(position).getKey();
-                viewHolder.setTitle(model.getTitle());
-                viewHolder.setContent(model.getContent());
-                viewHolder.setUsername(model.getUsername());
+                viewHolder.setNamaMahasiswa(model.getNamaMahasiswa());
+                viewHolder.setJenisKelamin(model.getJenisKelamin());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
-                viewHolder.setmBtnLike(postKey);
-
-                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //Toast.makeText(MainActivity.this,"You Clicked a Post" + postKey,Toast.LENGTH_LONG).show();
-                        Intent singlePost = new Intent(MainActivity.this, SinglePostActivity.class);
-                        singlePost.putExtra("postId",postKey);
-                        startActivity(singlePost);
-                    }
-                });
-
-                viewHolder.mBtnLike.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        mLikes = true;
-
-                        mDatabaseLike.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                if(mLikes){
-                                    if(dataSnapshot.child(postKey).hasChild(mAuth.getCurrentUser().getUid())){
-                                        mDatabaseLike.child(postKey).child(mAuth.getCurrentUser().getUid()).removeValue();
-                                        mLikes = false;
-                                    }else {
-                                        mDatabaseLike.child(postKey).child(mAuth.getCurrentUser().getUid()).setValue(model.getUsername());
-                                        mLikes = false;
-                                    }
-                                }
-
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-                    }
-                });
             }
         };
 
-        blogList.setAdapter(firebaseRecyclerAdapter);
+        mahasiswaList.setAdapter(firebaseRecyclerAdapter);
 
     }
 
@@ -259,49 +226,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             mView = itemView;
 
-            mBtnLike = (ImageButton) mView.findViewById(R.id.btnLike);
-
-            mDatabaseLike = FirebaseDatabase.getInstance().getReference().child("Like");
-            mDatabaseLike.keepSynced(true);
-
             mAuth = FirebaseAuth.getInstance();
         }
 
-        public void setmBtnLike(final String post_key){
-            mDatabaseLike.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())){
-                        mBtnLike.setImageResource(R.mipmap.ic_fill);
-                    }else {
-                        mBtnLike.setImageResource(R.mipmap.ic_empty);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-
-        public void setTitle(String title){
-            TextView postTitle = (TextView) mView.findViewById(R.id.postTitle);
+        public void setNamaMahasiswa(String title){
+            TextView postTitle = (TextView) mView.findViewById(R.id.namaMahasiswa);
             postTitle.setText(title);
         }
 
-        public void setContent(String content){
-            TextView postContent = (TextView) mView.findViewById(R.id.postContent);
+        public void setJenisKelamin(String content){
+            TextView postContent = (TextView) mView.findViewById(R.id.jkMahasiswa);
             postContent.setText(content);
         }
 
-        public void setUsername(String username){
-            TextView postUser = (TextView) mView.findViewById(R.id.postUser);
-            postUser.setText(username);
-        }
-
         public void setImage(Context context, String image){
-            ImageView postImage = (ImageView) mView.findViewById(R.id.postImage);
+            ImageView postImage = (ImageView) mView.findViewById(R.id.imgMahasiswa);
             Picasso.with(context).load(image).into(postImage);
         }
 

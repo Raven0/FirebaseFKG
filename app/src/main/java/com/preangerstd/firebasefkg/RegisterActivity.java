@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,7 +25,6 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressDialog dialog;
     private DatabaseReference mDatabase;
-    private String defaultImage = "https://firebasestorage.googleapis.com/v0/b/fir-blog-dbc7c.appspot.com/o/Image_Profile%2Fprofile_default.jpg?alt=media&token=d51f06d3-dca0-4f4b-8287-8059989f3d66";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,10 @@ public class RegisterActivity extends AppCompatActivity {
         String email = tbEmail.getText().toString().trim();
         String pass = tbPass.getText().toString().trim();
 
-        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)){
+        if(pass.length() <= 5){
+            Toast.makeText(this, "Pastikan password lebih dari 5 huruf", Toast.LENGTH_LONG).show();
+        } else if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)){
+
             dialog.setMessage("Signing Up");
             dialog.show();
             mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -63,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                         String userid = mAuth.getCurrentUser().getUid();
                         DatabaseReference user = mDatabase.child(userid);
                         user.child("name").setValue(name);
-                        user.child("image").setValue(defaultImage);
+                        user.child("image").setValue("default");
                         dialog.dismiss();
                         Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -72,5 +75,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             });
         }
+
     }
 }
