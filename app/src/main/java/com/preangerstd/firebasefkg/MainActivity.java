@@ -3,10 +3,13 @@ package com.preangerstd.firebasefkg;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 =======
+=======
+>>>>>>> parent of 9db7805... commit
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -34,12 +37,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+<<<<<<< HEAD
+>>>>>>> parent of 9db7805... commit
+=======
 >>>>>>> parent of 9db7805... commit
 
 public class MainActivity extends AppCompatActivity {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 9db7805... commit
     private RecyclerView mahasiswaList;
     private DatabaseReference mDatabase;
     private DatabaseReference mDatabaseUser;
@@ -247,6 +256,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
+>>>>>>> parent of 9db7805... commit
+=======
 >>>>>>> parent of 9db7805... commit
     private void logout() {
         mAuth.signOut(); //make sure AuthStateListener is added
