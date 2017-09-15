@@ -34,6 +34,9 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SetupActivity"></activity>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 9db7805... commit
+=======
 >>>>>>> parent of 9db7805... commit
 =======
 >>>>>>> parent of 9db7805... commit
