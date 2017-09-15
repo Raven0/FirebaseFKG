@@ -5,10 +5,13 @@ import android.support.annotation.NonNull;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 =======
+=======
+>>>>>>> parent of 9db7805... commit
 =======
 >>>>>>> parent of 9db7805... commit
 =======
@@ -42,6 +45,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 9db7805... commit
 =======
 >>>>>>> parent of 9db7805... commit
@@ -52,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
 <<<<<<< HEAD
 =======
 =======
+>>>>>>> parent of 9db7805... commit
+=======
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
 >>>>>>> parent of 9db7805... commit
 =======
 
@@ -267,6 +276,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 9db7805... commit
+=======
 >>>>>>> parent of 9db7805... commit
 =======
 >>>>>>> parent of 9db7805... commit
