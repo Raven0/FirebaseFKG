@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dataProdi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent gogog = new Intent(MainActivity.this, ProdiActivity.class);
+                startActivity(gogog);
             }
         });
 
@@ -145,11 +146,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_prodi) {
 
-            /*CoordinatorLayout mainLayout = (CoordinatorLayout) findViewById(R.id. main_container);
+            RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id. main_container);
             LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.content_main, null);
+            View layout = inflater.inflate(R.layout.activity_prodi, null);
             mainLayout.removeAllViews();
-            mainLayout.addView(layout);*/
+            mainLayout.addView(layout);
 
         } else if (id == R.id.nav_input) {
 
