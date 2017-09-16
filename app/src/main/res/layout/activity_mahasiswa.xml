@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.preangerstd.firebasefkg.MahasiswaActivity">
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/InpMahasiswa">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/unpad"
+                android:background="@android:color/white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:text="Data Mahasiswa"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="12dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@android:color/black"
+                    android:text="Input Data Mahasiswa"
+                    android:background="@color/colorAccent"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:id="@+id/mahasiswaList"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_below="@id/InpMahasiswa">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

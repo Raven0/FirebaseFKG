@@ -1,154 +1,126 @@
 package com.preangerstd.firebasefkg;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-=======
-=======
->>>>>>> parent of 9db7805... commit
-=======
->>>>>>> parent of 9db7805... commit
-=======
->>>>>>> parent of 9db7805... commit
-=======
->>>>>>> parent of 9db7805... commit
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
->>>>>>> parent of 9db7805... commit
+import android.widget.RelativeLayout;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-<<<<<<< HEAD
-=======
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 9db7805... commit
-=======
->>>>>>> parent of 9db7805... commit
-
-public class MainActivity extends AppCompatActivity {
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 9db7805... commit
-=======
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
->>>>>>> parent of 9db7805... commit
-=======
-
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
->>>>>>> parent of 9db7805... commit
-=======
-
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
->>>>>>> parent of 9db7805... commit
-    private RecyclerView mahasiswaList;
-    private DatabaseReference mDatabase;
-    private DatabaseReference mDatabaseUser;
->>>>>>> parent of 9db7805... commit
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private CardView dataMahasiswa;
+    private CardView dataProdi;
+    private CardView inputMahasiswa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        dataMahasiswa = (CardView) findViewById(R.id.shortcutMahasiswa);
+        dataProdi = (CardView) findViewById(R.id.shortcutProdi);
+        inputMahasiswa = (CardView) findViewById(R.id.shortcutInpMahasiswa);
+
+        dataMahasiswa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent lihatData = new Intent(MainActivity.this, MahasiswaActivity.class);
+                startActivity(lihatData);
+            }
+        });
+
+        dataProdi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        inputMahasiswa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent inputData = new Intent(MainActivity.this, InputMahasiswaActivity.class);
+                startActivity(inputData);
+            }
+        });
+        //Firebase Start Here
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() == null){
-                    /*Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                    Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
                     loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(loginIntent);*/
+                    startActivity(loginIntent);
                 }
             }
         };
-<<<<<<< HEAD
-=======
-
-        mahasiswaList = (RecyclerView) findViewById(R.id.mahasiswaList);
-        mahasiswaList.setHasFixedSize(true);
-        mahasiswaList.setLayoutManager(new LinearLayoutManager(this));
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("tbMahasiswa");
-        mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("User");
-        mDatabaseUser.keepSynced(true);
->>>>>>> parent of 9db7805... commit
         checkUserExist();
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-        /*if(mAuth.getCurrentUser() != null){
-        }*/
-
-        mAuth.addAuthStateListener(mAuthListener);
-
-
-
-    }
-
-    private void checkUserExist() {
-        if(mAuth.getCurrentUser() != null) {
-            final String userid = mAuth.getCurrentUser().getUid();
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
 
         if(item.getItemId() == R.id.action_logout){
             logout();
         }
+
         return super.onOptionsItemSelected(item);
     }
 
-<<<<<<< HEAD
-=======
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -157,31 +129,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_mainmenu) {
 
-            /*LinearLayout mainLayout = (LinearLayout) findViewById(R.id. main_container);
+            RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id. main_container);
             LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.content_main, null);
             mainLayout.removeAllViews();
-            mainLayout.addView(layout);*/
+            mainLayout.addView(layout);
 
         } else if (id == R.id.nav_mahasiswa) {
 
-            /*LinearLayout mainLayout = (LinearLayout) findViewById(R.id. main_container);
+            RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id. main_container);
             LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.content_main, null);
+            View layout = inflater.inflate(R.layout.activity_mahasiswa, null);
             mainLayout.removeAllViews();
-            mainLayout.addView(layout);*/
+            mainLayout.addView(layout);
 
         } else if (id == R.id.nav_prodi) {
 
-            /*LinearLayout mainLayout = (LinearLayout) findViewById(R.id. main_container);
+            /*CoordinatorLayout mainLayout = (CoordinatorLayout) findViewById(R.id. main_container);
             LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.content_main, null);
             mainLayout.removeAllViews();
             mainLayout.addView(layout);*/
 
-        } else if (id == R.id.nav_detail) {
+        } else if (id == R.id.nav_input) {
 
-            /*LinearLayout mainLayout = (LinearLayout) findViewById(R.id. main_container);
+            /*CoordinatorLayout mainLayout = (CoordinatorLayout) findViewById(R.id. main_container);
             LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.content_main, null);
             mainLayout.removeAllViews();
@@ -205,97 +177,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mAuth.addAuthStateListener(mAuthListener);
 
-        FirebaseRecyclerAdapter<DataMahasiswa, PostViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<DataMahasiswa, PostViewHolder>(
-
-                DataMahasiswa.class,
-                R.layout.card_mahasiswa,
-                PostViewHolder.class,
-                mDatabase
-        ) {
-            @Override
-            protected void populateViewHolder(PostViewHolder viewHolder, final DataMahasiswa model, int position) {
-
-                final String postKey = getRef(position).getKey();
-                viewHolder.setNamaMahasiswa(model.getNamaMahasiswa());
-                viewHolder.setJenisKelamin(model.getJenisKelamin());
-                viewHolder.setImage(getApplicationContext(), model.getImage());
-            }
-        };
-
-        mahasiswaList.setAdapter(firebaseRecyclerAdapter);
-
     }
 
     private void checkUserExist() {
         if(mAuth.getCurrentUser() != null){
             final String userid = mAuth.getCurrentUser().getUid();
-
-            mDatabaseUser.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(!dataSnapshot.hasChild(userid)){
-                        Toast.makeText(MainActivity.this, "Please Setup your Account", Toast.LENGTH_LONG).show();
-                        Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
-                        setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(setupIntent);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
         }
     }
 
-    public static class PostViewHolder extends RecyclerView.ViewHolder{
-
-        View mView;
-
-        ImageButton mBtnLike;
-
-        DatabaseReference mDatabaseLike;
-        FirebaseAuth mAuth;
-
-        public PostViewHolder(View itemView) {
-            super(itemView);
-
-            mView = itemView;
-
-            mAuth = FirebaseAuth.getInstance();
-        }
-
-        public void setNamaMahasiswa(String title){
-            TextView postTitle = (TextView) mView.findViewById(R.id.namaMahasiswa);
-            postTitle.setText(title);
-        }
-
-        public void setJenisKelamin(String content){
-            TextView postContent = (TextView) mView.findViewById(R.id.jkMahasiswa);
-            postContent.setText(content);
-        }
-
-        public void setImage(Context context, String image){
-            ImageView postImage = (ImageView) mView.findViewById(R.id.imgMahasiswa);
-            Picasso.with(context).load(image).into(postImage);
-        }
-
-    }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 9db7805... commit
-=======
->>>>>>> parent of 9db7805... commit
-=======
->>>>>>> parent of 9db7805... commit
-=======
->>>>>>> parent of 9db7805... commit
-=======
->>>>>>> parent of 9db7805... commit
     private void logout() {
         mAuth.signOut(); //make sure AuthStateListener is added
     }
