@@ -6,7 +6,7 @@ package com.preangerstd.firebasefkg;
 
 public class DataProgramstudi {
 
-    private String progamStudi;
+    private String programStudi;
     private String ketua;
     private String sekretaris;
     private String konsentrasi;
@@ -18,8 +18,8 @@ public class DataProgramstudi {
 
     }
 
-    public DataProgramstudi(String progamStudi, String ketua, String sekretaris, String konsentrasi, String gelar, String alamat, String email) {
-        this.progamStudi = progamStudi;
+    public DataProgramstudi(String programStudi, String ketua, String sekretaris, String konsentrasi, String gelar, String alamat, String email) {
+        this.programStudi = programStudi;
         this.ketua = ketua;
         this.sekretaris = sekretaris;
         this.konsentrasi = konsentrasi;
@@ -28,12 +28,12 @@ public class DataProgramstudi {
         this.email = email;
     }
 
-    public String getProgamStudi() {
-        return progamStudi;
+    public String getProgramStudi() {
+        return programStudi;
     }
 
-    public void setProgamStudi(String progamStudi) {
-        this.progamStudi = progamStudi;
+    public void setProgramStudi(String programStudi) {
+        this.programStudi = programStudi;
     }
 
     public String getKetua() {

@@ -70,7 +70,7 @@ public class ProdiActivity extends AppCompatActivity {
             protected void populateViewHolder(ProdiViewHolder viewHolder, final DataProgramstudi model, int position) {
 
                 final String cardKey = getRef(position).getKey();
-                viewHolder.setTitle(model.getProgamStudi());
+                viewHolder.setTitle(model.getProgramStudi());
                 /*viewHolder.setContent(model.getKonsentrasi());*/
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
