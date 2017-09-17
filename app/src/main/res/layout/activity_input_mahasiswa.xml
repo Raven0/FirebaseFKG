@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.preangerstd.firebasefkg.InputMahasiswaActivity">
+    tools:context="com.preangerstd.firebasefkg.InputMahasiswaActivity"
+    android:orientation="vertical"
+    android:gravity="center">
 
+    <!--Image-->
     <ImageButton
         android:id="@+id/btnSetupImg"
         android:layout_width="120dp"
@@ -13,16 +16,13 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/profile_default"
         android:background="@android:color/transparent"
-        android:layout_alignParentTop="true"
-        android:scaleType="centerCrop"
-        android:layout_centerHorizontal="true" />
+        android:scaleType="centerCrop" />
 
+    <!--Nama-->
     <EditText
         android:id="@+id/tbNamaMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
@@ -32,15 +32,13 @@
         android:inputType="textPersonName"
         android:padding="10dp"
         android:selectAllOnFocus="false"
-        android:layout_below="@+id/btnSetupImg"
         />
 
+    <!--Alamat-->
     <EditText
         android:id="@+id/tbAlamatMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
@@ -50,15 +48,13 @@
         android:inputType="text"
         android:padding="10dp"
         android:selectAllOnFocus="false"
-        android:layout_below="@+id/tbNamaMahasiswa"
         />
 
+    <!--Tgllahir-->
     <EditText
         android:id="@+id/tbTglMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
@@ -68,97 +64,87 @@
         android:inputType="datetime"
         android:padding="10dp"
         android:selectAllOnFocus="false"
-        android:layout_below="@+id/tbAlamatMahasiswa"
         />
 
-    <RadioButton
-        android:id="@+id/rbLakiMahasiswa"
+    <!--Gender-->
+    <Spinner
+        android:id="@+id/cbGenderMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/tbTglMahasiswa"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:checked="false"
-        android:text="Pria"/>
+        android:entries="@array/GenderList"
+        android:background="@drawable/input_outline"
+        android:padding="10dp"
+        >
 
-    <RadioButton
-        android:id="@+id/rbCeweMahasiswa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/rbLakiMahasiswa"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="5dp"
-        android:checked="false"
-        android:text="Wanita"/>
+    </Spinner>
 
+    <!--Religion-->
     <Spinner
         android:id="@+id/cbAgamaMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/rbCeweMahasiswa">
+        android:layout_marginTop="20dp"
+        android:entries="@array/ReligionList"
+        android:background="@drawable/input_outline"
+        android:padding="10dp">
 
     </Spinner>
 
+    <!--Blood-->
     <Spinner
         android:id="@+id/cbDarahMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/cbAgamaMahasiswa">
+        android:layout_marginTop="20dp"
+        android:entries="@array/BloodList"
+        android:background="@drawable/input_outline"
+        android:padding="10dp">
 
     </Spinner>
 
+    <!--Year-->
     <Spinner
         android:id="@+id/cbAngkatanMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:layout_below="@id/cbDarahMahasiswa">
+        android:background="@drawable/input_outline"
+        android:padding="10dp">
 
     </Spinner>
 
+    <!--Nationality-->
     <Spinner
         android:id="@+id/cbNegaraMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:layout_below="@id/cbAngkatanMahasiswa">
+        android:background="@drawable/input_outline"
+        android:padding="10dp">
 
     </Spinner>
 
+    <!--Prodi-->
     <Spinner
         android:id="@+id/cbProdiMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:layout_below="@id/cbNegaraMahasiswa">
+        android:background="@drawable/input_outline"
+        android:padding="10dp">
 
     </Spinner>
 
@@ -168,11 +154,9 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:textColor="@android:color/white"
-        android:layout_centerHorizontal="true"
         android:background="@color/colorPrimary"
-        android:layout_below="@id/cbProdiMahasiswa"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
 
-</RelativeLayout>
+</LinearLayout>

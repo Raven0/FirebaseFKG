@@ -6,4 +6,29 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
+
+    <string-array name="GenderList">
+        <item>Select</item>
+        <item>Pria</item>
+        <item>Wanita</item>
+    </string-array>
+
+    <string-array name="ReligionList">
+        <item>Select</item>
+        <item>Islam</item>
+        <item>Protestant</item>
+        <item>Catholic</item>
+        <item>Buddha</item>
+        <item>Hindu</item>
+        <item>Konghuchu</item>
+        <item>Shinto</item>
+    </string-array>
+
+    <string-array name="BloodList">
+        <item>Select</item>
+        <item>A</item>
+        <item>AB</item>
+        <item>B</item>
+        <item>O</item>
+    </string-array>
 </resources>
