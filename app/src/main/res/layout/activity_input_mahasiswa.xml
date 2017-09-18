@@ -38,7 +38,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/input_outline"
                 android:ems="10"
-                android:hint="Nama"
+                android:hint="Name"
                 android:inputType="textPersonName"
                 android:padding="10dp"
                 android:selectAllOnFocus="false"
@@ -54,7 +54,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/input_outline"
                 android:ems="10"
-                android:hint="Alamat"
+                android:hint="Address"
                 android:inputType="text"
                 android:padding="10dp"
                 android:selectAllOnFocus="false"
@@ -70,14 +70,15 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/input_outline"
                 android:ems="10"
-                android:hint="Tanggal Lahir"
+                android:hint="Birth Date"
                 android:padding="10dp"
                 android:selectAllOnFocus="false"
                 android:clickable="true"
                 android:editable="false" />
 
             <!--Gender-->
-            <!--<Spinner
+
+            <Spinner
                 android:id="@+id/cbGenderMahasiswa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,28 +90,7 @@
                 android:padding="10dp"
                 >
 
-            </Spinner>-->
-            <RadioGroup
-                android:id="@+id/rg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
-
-                <RadioButton
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rbPria"
-                    android:text="Pria"
-                    />
-                <RadioButton
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rbWanita"
-                    android:text="Wantia"
-                    />
-
-            </RadioGroup>
+            </Spinner>
 
             <!--Religion-->
             <Spinner
@@ -180,7 +160,7 @@
             </Spinner>
 
             <Button
-                android:id="@+id/btnSetupSubmit"
+                android:id="@+id/btnSubmitMhsw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Submit"
@@ -188,7 +168,8 @@
                 android:background="@color/colorPrimary"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
 
