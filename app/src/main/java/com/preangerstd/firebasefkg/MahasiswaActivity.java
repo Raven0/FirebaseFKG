@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -91,10 +90,9 @@ public class MahasiswaActivity extends AppCompatActivity {
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(MahasiswaActivity.this,"You Clicked a Data" + cardKey, Toast.LENGTH_LONG).show();
-                        /*Intent singlePost = new Intent(MainActivity.this, SinglePostActivity.class);
-                        singlePost.putExtra("postId",postKey);
-                        startActivity(singlePost);*/
+                        Intent singlePost = new Intent(MahasiswaActivity.this, DetailMahasiswaActivity.class);
+                        singlePost.putExtra("postId",cardKey);
+                        startActivity(singlePost);
                     }
                 });
             }

@@ -31,7 +31,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MahasiswaActivity" />
         <activity android:name=".InputMahasiswaActivity" />
-        <activity android:name=".ProdiActivity"></activity>
+        <activity android:name=".ProdiActivity" />
+        <activity android:name=".DetailMahasiswaActivity"></activity>
     </application>
 
 </manifest>

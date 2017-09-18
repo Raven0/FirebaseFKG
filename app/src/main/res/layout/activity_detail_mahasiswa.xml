@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.preangerstd.firebasefkg.DetailMahasiswaActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!--Image-->
+            <ImageView
+                android:id="@+id/ImgSingleMahasiswa"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/profile_default"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop" />
+
+            <!--Nama-->
+            <TextView
+                android:id="@+id/NamaSingleMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:hint="Nama"
+                android:padding="10dp"
+                android:selectAllOnFocus="false"
+                />
+
+            <!--Alamat-->
+            <TextView
+                android:id="@+id/AlamatSingleMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:hint="Alamat"
+                android:padding="10dp"
+                android:selectAllOnFocus="false"
+                />
+
+            <!--Tgllahir-->
+            <TextView
+                android:id="@+id/TglSingleMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:hint="Tanggal Lahir"
+                android:padding="10dp"
+                android:selectAllOnFocus="false"
+                />
+
+            <!--Gender-->
+            <TextView
+                android:id="@+id/GenderSingleMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:padding="10dp"
+                android:hint="Gender"/>
+
+            <!--Religion-->
+            <TextView
+                android:id="@+id/AgamaSingleMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:padding="10dp"
+                android:hint="Religon"/>
+
+            <!--Blood-->
+            <TextView
+                android:id="@+id/DarahSingleMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:padding="10dp"
+                android:hint="Blood"/>
+
+            <!--Year-->
+            <TextView
+                android:id="@+id/AngkatanSingleMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:padding="10dp"
+                android:hint="Year"/>
+
+            <!--Nationality-->
+            <TextView
+                android:id="@+id/NegaraSingleMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:padding="10dp"
+                android:hint="Nation"/>
+
+            <!--Prodi-->
+            <TextView
+                android:id="@+id/ProdiSingleMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_outline"
+                android:padding="10dp"
+                android:hint="Prodi"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

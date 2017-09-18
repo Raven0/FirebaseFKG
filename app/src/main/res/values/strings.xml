@@ -31,4 +31,5 @@
         <item>B</item>
         <item>O</item>
     </string-array>
+    <string name="title_activity_detail_mahasiswa">DetailMahasiswaActivity</string>
 </resources>
