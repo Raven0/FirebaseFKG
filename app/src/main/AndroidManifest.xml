@@ -32,7 +32,8 @@
         <activity android:name=".MahasiswaActivity" />
         <activity android:name=".InputMahasiswaActivity" />
         <activity android:name=".ProdiActivity" />
-        <activity android:name=".DetailMahasiswaActivity"></activity>
+        <activity android:name=".DetailMahasiswaActivity" />
+        <activity android:name=".DetailProdiActivity"></activity>
     </application>
 
 </manifest>

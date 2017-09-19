@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.preangerstd.firebasefkg.DetailProdiActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!--Image-->
+            <ImageView
+                android:id="@+id/ImgSingleProdi"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/unpad"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop" />
+
+            <!--Nama-->
+            <TextView
+                android:id="@+id/NamaSingleProdi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:padding="10dp"
+                android:selectAllOnFocus="false"
+                />
+
+            <!--Konsentrasi-->
+            <TextView
+                android:id="@+id/KonsentrasiSingleProdi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:padding="10dp"
+                android:selectAllOnFocus="false"
+                />
+
+            <!--Alamat-->
+            <TextView
+                android:id="@+id/AlamatSingleProdi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:padding="10dp"
+                android:selectAllOnFocus="false"
+                />
+
+            <!--Gelar-->
+            <TextView
+                android:id="@+id/GelarSingleProdi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:padding="10dp"
+                android:selectAllOnFocus="false"
+                />
+
+            <!--Email-->
+            <TextView
+                android:id="@+id/EmailSingleProdi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:padding="10dp"
+                android:selectAllOnFocus="false"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
