@@ -203,7 +203,6 @@ public class InputMahasiswaActivity extends AppCompatActivity {
                     mDatabaseMahasiswa.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-
                             newPost.child("agama").setValue(religion_val);
                             newPost.child("alamat").setValue(address_val);
                             newPost.child("angkatan").setValue(year_val);
@@ -214,11 +213,11 @@ public class InputMahasiswaActivity extends AppCompatActivity {
                             newPost.child("selectProdi").setValue(prodi_val);
                             newPost.child("tglLahir").setValue(birth_val);
                             newPost.child("urlPhoto").setValue(downloadUrl.toString());
-                            newPost.child("id").setValue(dataSnapshot.child()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            newPost.child("id").setValue(dataSnapshot.getRef().getKey().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        startActivity(new Intent(InputMahasiswaActivity.this, MainActivity.class));
+                                        /*startActivity(new Intent(InputMahasiswaActivity.this, MainActivity.class));*/
                                     }else {
                                         Toast.makeText(InputMahasiswaActivity.this, "Error Posting", Toast.LENGTH_LONG).show();
                                     }
