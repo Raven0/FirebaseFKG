@@ -65,7 +65,7 @@ public class InputMahasiswaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input_mahasiswa);
 
         storage = FirebaseStorage.getInstance().getReference();
-        mDatabaseMahasiswa = FirebaseDatabase.getInstance().getReference().child("tbMahasiswaAndroidTesting");
+        mDatabaseMahasiswa = FirebaseDatabase.getInstance().getReference().child("tbMahasiswa");
         btnImg = (ImageButton) findViewById(R.id.btnSetupImg);
         tbNama = (EditText) findViewById(R.id.tbNamaMahasiswa);
         tbAlamat = (EditText) findViewById(R.id.tbAlamatMahasiswa);
@@ -213,11 +213,11 @@ public class InputMahasiswaActivity extends AppCompatActivity {
                             newPost.child("selectProdi").setValue(prodi_val);
                             newPost.child("tglLahir").setValue(birth_val);
                             newPost.child("urlPhoto").setValue(downloadUrl.toString());
-                            newPost.child("id").setValue(dataSnapshot.getRef().getKey().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            newPost.child("id").setValue(newPost.getKey().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        /*startActivity(new Intent(InputMahasiswaActivity.this, MainActivity.class));*/
+                                        startActivity(new Intent(InputMahasiswaActivity.this, MainActivity.class));
                                     }else {
                                         Toast.makeText(InputMahasiswaActivity.this, "Error Posting", Toast.LENGTH_LONG).show();
                                     }
