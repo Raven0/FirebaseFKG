@@ -2,19 +2,20 @@ package com.preangerstd.firebasefkg;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ public class InputMahasiswaActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseProdi;
 
     private ImageButton btnImg;
-    private EditText tbNama, tbAlamat;
+    private EditText tbNama, tbNamaB, tbAlamat;
     private Button btnSubmit;
     private static final int GALLERY_REQ = 1;
     private StorageReference storage;
@@ -56,9 +57,6 @@ public class InputMahasiswaActivity extends AppCompatActivity {
 
     private Spinner agama,darah,tahun,negara,cbProdi,jk;
 
-    RadioButton rb1,rb2;
-    RadioGroup rg;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +66,7 @@ public class InputMahasiswaActivity extends AppCompatActivity {
         mDatabaseMahasiswa = FirebaseDatabase.getInstance().getReference().child("tbMahasiswa");
         btnImg = (ImageButton) findViewById(R.id.btnSetupImg);
         tbNama = (EditText) findViewById(R.id.tbNamaMahasiswa);
+        tbNamaB = (EditText) findViewById(R.id.tbNamaBMahasiswa);
         tbAlamat = (EditText) findViewById(R.id.tbAlamatMahasiswa);
         agama = (Spinner)findViewById(R.id.cbAgamaMahasiswa);
         darah = (Spinner)findViewById(R.id.cbDarahMahasiswa);
@@ -173,7 +172,22 @@ public class InputMahasiswaActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startPosting();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(InputMahasiswaActivity.this);
+                builder.setTitle("Alert");
+                builder.setMessage("Apakah anda yakin dengan data ini?");
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                return;
+                            }
+                        });
+                builder.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                startPosting();
+                            }
+                        });
+                builder.show();
             }
         });
     }
@@ -181,6 +195,7 @@ public class InputMahasiswaActivity extends AppCompatActivity {
     private void startPosting() {
         progressDialog.setMessage("Uploading");
         final String name_val = tbNama.getText().toString().trim();
+        final String nameB_val = tbNamaB.getText().toString().trim();
         final String address_val = tbAlamat.getText().toString().trim();
         final String birth_val = edittext.getText().toString().trim();
         final String gender_val = jk.getSelectedItem().toString();
@@ -189,7 +204,7 @@ public class InputMahasiswaActivity extends AppCompatActivity {
         final String year_val = tahun.getSelectedItem().toString();
         final String nation_val = negara.getSelectedItem().toString();
         final String prodi_val = cbProdi.getSelectedItem().toString();
-        if(imageUri != null){
+        if(imageUri != null && !TextUtils.isEmpty(name_val) && !TextUtils.isEmpty(nameB_val) && !TextUtils.isEmpty(address_val) && !TextUtils.isEmpty(birth_val)){
             progressDialog.show();
             StorageReference filepath = storage.child("gallery").child(imageUri.getLastPathSegment());
 
@@ -209,7 +224,8 @@ public class InputMahasiswaActivity extends AppCompatActivity {
                             newPost.child("golDarah").setValue(blood_val);
                             newPost.child("jenisKelamin").setValue(gender_val);
                             newPost.child("kewarganegaraan").setValue(nation_val);
-                            newPost.child("namaMahasiswa").setValue(name_val);
+                            newPost.child("namaDepan").setValue(name_val);
+                            newPost.child("namaBelakang").setValue(nameB_val);
                             newPost.child("selectProdi").setValue(prodi_val);
                             newPost.child("tglLahir").setValue(birth_val);
                             newPost.child("urlPhoto").setValue(downloadUrl.toString());
@@ -217,7 +233,7 @@ public class InputMahasiswaActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        startActivity(new Intent(InputMahasiswaActivity.this, MainActivity.class));
+                                        startActivity(new Intent(InputMahasiswaActivity.this, MahasiswaActivity.class));
                                     }else {
                                         Toast.makeText(InputMahasiswaActivity.this, "Error Posting", Toast.LENGTH_LONG).show();
                                     }
@@ -231,10 +247,11 @@ public class InputMahasiswaActivity extends AppCompatActivity {
                         }
                     });
                     progressDialog.dismiss();
-
-
                 }
             });
+        }
+        else {
+            Toast.makeText(InputMahasiswaActivity.this, "Pastikan Semua Field Terisi", Toast.LENGTH_LONG).show();
         }
     }
 

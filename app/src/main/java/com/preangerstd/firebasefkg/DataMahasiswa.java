@@ -12,7 +12,8 @@ public class DataMahasiswa {
     private String golDarah;
     private String jenisKelamin;
     private String kewarganegaraan;
-    private String namaMahasiswa;
+    private String namaDepan;
+    private String namaBelakang;
     private String tglLahir;
     private String selectProdi;
 
@@ -20,14 +21,15 @@ public class DataMahasiswa {
 
     }
 
-    public DataMahasiswa(String agama, String alamat, String angkatan, String golDarah, String jenisKelamin, String kewarganegaraan, String namaMahasiswa, String tglLahir, String selectProdi, String urlPhoto) {
+    public DataMahasiswa(String agama, String alamat, String angkatan, String golDarah, String jenisKelamin, String kewarganegaraan, String namaDepan, String namaBelakang, String tglLahir, String selectProdi, String urlPhoto) {
         this.agama = agama;
         this.alamat = alamat;
         this.angkatan = angkatan;
         this.golDarah = golDarah;
         this.jenisKelamin = jenisKelamin;
         this.kewarganegaraan = kewarganegaraan;
-        this.namaMahasiswa = namaMahasiswa;
+        this.namaDepan = namaDepan;
+        this.namaBelakang = namaBelakang;
         this.tglLahir = tglLahir;
         this.selectProdi = selectProdi;
         this.urlPhoto = urlPhoto;
@@ -81,12 +83,20 @@ public class DataMahasiswa {
         this.kewarganegaraan = kewarganegaraan;
     }
 
-    public String getNamaMahasiswa() {
-        return namaMahasiswa;
+    public String getNamaDepan() {
+        return namaDepan;
     }
 
-    public void setNamaMahasiswa(String namaMahasiswa) {
-        this.namaMahasiswa = namaMahasiswa;
+    public void setNamaDepan(String namaDepan) {
+        this.namaDepan = namaDepan;
+    }
+
+    public String getNamaBelakang() {
+        return namaBelakang;
+    }
+
+    public void setNamaBelakang(String namaBelakang) {
+        this.namaBelakang = namaBelakang;
     }
 
     public String getTglLahir() {

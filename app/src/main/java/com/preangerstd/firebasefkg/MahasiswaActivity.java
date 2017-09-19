@@ -83,7 +83,7 @@ public class MahasiswaActivity extends AppCompatActivity {
             protected void populateViewHolder(PostViewHolder viewHolder, final DataMahasiswa model, int position) {
 
                 final String cardKey = getRef(position).getKey();
-                viewHolder.setTitle(model.getNamaMahasiswa());
+                viewHolder.setTitle(model.getNamaDepan());
                 viewHolder.setContent(model.getSelectProdi());
                 viewHolder.setImage(getApplicationContext(), model.getUrlPhoto());
 

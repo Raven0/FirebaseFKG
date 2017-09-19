@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -76,10 +75,9 @@ public class ProdiActivity extends AppCompatActivity {
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(ProdiActivity.this,"You Clicked a Data" + cardKey, Toast.LENGTH_LONG).show();
-                        /*Intent singlePost = new Intent(MainActivity.this, SinglePostActivity.class);
-                        singlePost.putExtra("postId",postKey);
-                        startActivity(singlePost);*/
+                        Intent singlePost = new Intent(ProdiActivity.this, DetailProdiActivity.class);
+                        singlePost.putExtra("postId",cardKey);
+                        startActivity(singlePost);
                     }
                 });
             }

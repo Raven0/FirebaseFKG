@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 public class DetailMahasiswaActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
-    private TextView dNama, dGender, dAgama, dAlamat, dBlood, dNation, dYear, dTgl, dProdi;
+    private TextView dNama, dNamaB, dGender, dAgama, dAlamat, dBlood, dNation, dYear, dTgl, dProdi;
     private ImageView dFoto;
     private String postKey = null;
     private FirebaseAuth mAuth;
@@ -32,6 +32,7 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         dNama = (TextView) findViewById(R.id.NamaSingleMahasiswa);
+        dNamaB = (TextView) findViewById(R.id.NamaBSingleMahasiswa);
         dGender = (TextView) findViewById(R.id.GenderSingleMahasiswa);
         dAlamat = (TextView) findViewById(R.id.AlamatSingleMahasiswa);
         dAgama = (TextView) findViewById(R.id.AgamaSingleMahasiswa);
@@ -45,7 +46,8 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
         mDatabase.child(postKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String namaMahasiswa = (String) dataSnapshot.child("namaMahasiswa").getValue();
+                String namaDepan = (String) dataSnapshot.child("namaDepan").getValue();
+                String namaBelakang = (String) dataSnapshot.child("namaBelakang").getValue();
                 String genderMahasiswa = (String) dataSnapshot.child("jenisKelamin").getValue();
                 String alamatMahasiswa = (String) dataSnapshot.child("alamat").getValue();
                 String agamaMahasiswa = (String) dataSnapshot.child("agama").getValue();
@@ -56,7 +58,8 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
                 String prodiMahasiswa = (String) dataSnapshot.child("selectProdi").getValue();
                 String fotoMahasiswa = (String) dataSnapshot.child("urlPhoto").getValue();
 
-                dNama.setText(namaMahasiswa);
+                dNama.setText(namaDepan);
+                dNamaB.setText(namaBelakang);
                 dGender.setText(genderMahasiswa);
                 dAlamat.setText(alamatMahasiswa);
                 dAgama.setText(agamaMahasiswa);

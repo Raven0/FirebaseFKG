@@ -44,6 +44,21 @@
                 android:selectAllOnFocus="false"
                 />
 
+            <EditText
+                android:id="@+id/tbNamaBMahasiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:selectAllOnFocus="false"
+                />
+
             <!--Alamat-->
             <EditText
                 android:id="@+id/tbAlamatMahasiswa"
